@@ -1,0 +1,15 @@
+<h2>Editar nueva actividad </h2>
+<br>
+<% if user_signed_in? %>
+	<%= form_with model: Activity, url: update_new_activity_path(@activity), method: :patch, local: true do |f| %>
+		
+		<%= f.label :author %>
+		<%= f.text_field :author %>	<br>
+
+		<%= f.label :category %>
+		<%= f.text_field :category_id %>		
+
+		<%= f.submit "Enviar" %>
+
+	<% end %>
+<% end %>

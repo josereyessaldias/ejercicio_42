@@ -1,0 +1,33 @@
+<ul class="nav bg-light">
+  <li class="nav-item">
+    <%= link_to 'Inicio', root_path, :class => 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <% if user_signed_in? %>
+    	<span class="nav-link"><%= current_user.name %></span>
+    <% else %>
+    	<%= link_to 'Ingresar', new_user_session_path, :class => 'nav-link' %>
+    <% end %>
+  </li>
+  
+	<li class="nav-item">
+    <% if user_signed_in? %>
+      <%= link_to 'Promocionar Actividad', new_promote_path, :class => 'nav-link' %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <% if user_signed_in? %>
+      <%= link_to 'Historial Promociones', promote_activities_path(current_user), :class => 'nav-link' %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+		<% if user_signed_in? %>
+		  <%= link_to 'Salir', destroy_user_session_path, method: :delete, :class => 'nav-link' %>
+		<% else %>
+		  <%= link_to 'Registrarse', new_user_registration_path, :class => 'nav-link' %>
+		<% end %>
+	</li>
+  
+</ul>

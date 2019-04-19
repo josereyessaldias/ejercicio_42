@@ -1,0 +1,45 @@
+<h1>Pages#index</h1>
+
+
+<% if user_signed_in? %>
+	<%= form_with model: @activity, url: asigne_activity_path(current_user), method: :post, local: true do |f| %>
+
+		<%= f.label :activity %>
+		<%= f.collection_select :activity_id, @user_activities, :id, :name, :prompt => true %>
+
+		<%= f.submit "Enviar" %>
+
+	<% end %><br>
+
+	<%= form_with model: @activity, url: new_activity_path(current_user), method: :post, local: true do |f| %>
+	
+		<%= f.label :nueva_actividad %>
+		<%= f.text_field :name %>
+
+		<%= f.submit "Enviar" %>
+	<% end %><br>
+
+
+
+<% end %>
+
+<br>
+<hr>
+<h5>Conectados</h5>
+
+<br><br>
+<hr>
+<h5>Total Usuarios</h5>
+<% @users.each do |user| %>
+	<%= link_to user.name, user_page_path(user) %><br>
+<% end %>
+<hr>
+
+<h5>Publicidad</h5>
+
+<% @promotes.each do |promote| %>
+	<%= promote.activity.name %><br>
+<% end %>
+
+
+

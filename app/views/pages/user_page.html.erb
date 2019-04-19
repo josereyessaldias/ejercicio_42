@@ -1,0 +1,33 @@
+<h1>Página del <%= @user.name %></h1>
+<br>
+
+<% @category.each do |category| %>
+	<% @activities.each do |act| %>
+		<% if act.activity.category_id == category.id %>
+			<h5><%= category.sustantivo %> que <%= category.past %></h5>
+			<% @activities.each do |act| %>
+				<% if act.activity.category_id == category.id %>
+					<% if act.activity.author %>
+						<%= act.activity.name %> de <%= act.activity.author %> | leído el <%= act.start.strftime("%F") %> | registrado <%= time_ago_in_words(act.activity.created_at) %> ago 
+						<% if can?(:destroy, act) %>
+							<%= link_to 'Editar', edit_activity_path(@user,act.activity.id) %>
+							<%= link_to 'Borrar actividad', destroy_activity_path(@user,act.activity.id), method: :delete %>
+						<% end %>
+					<% else %>
+						<%= act.activity.name %> | vista el <%= act.start.strftime("%F") %> | registrado <%= time_ago_in_words(act.activity.created_at) %> ago
+						<% if can?(:destroy, act) %>
+							<%= link_to 'Editar', edit_activity_path(@user,act.activity.id) %>
+							<%= link_to 'Borrar actividad', destroy_activity_path(@user,act.activity.id), method: :delete %>
+						<% end %>
+					<% end %>
+					
+					<br>
+				<% end %>
+			<% end %><br>
+			<% break %>
+		<% end %>
+	<% end %>
+<% end %>
+		
+		
+
