@@ -11,4 +11,7 @@ class User < ApplicationRecord
   has_many :activities, through: :user_activity
   has_many :promote_activity
   has_many :billings
+
+  has_many :contacting, class_name: 'Contact', foreign_key: :user_id
+  has_many :contacted, class_name: 'Contact', foreign_key: :followed_id
 end

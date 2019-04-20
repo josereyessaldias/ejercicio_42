@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   post 'create_promote/:user_id', to: 'promote_activities#create', as: 'create_promote'
   delete 'promote/:id', to: 'promote_activities#destroy', as: 'destroy_promote'
 
+  post 'contacts/:id', to: 'contacts#create', as: 'contacts'
+  delete 'contacts/:id', to: 'contacts#destroy', as: 'destroy_contacts'
+
   resources :billings, only: [:index] do
     collection do
       get 'pre_pay'

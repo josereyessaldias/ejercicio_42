@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_005751) do
+ActiveRecord::Schema.define(version: 2019_04_19_230611) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2019_04_17_005751) do
     t.datetime "updated_at", null: false
     t.string "past"
     t.string "sustantivo"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.boolean "blocked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "followed_id"
+    t.index ["followed_id"], name: "index_contacts_on_followed_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "promote_activities", force: :cascade do |t|

@@ -1,6 +1,15 @@
 <h1>Página del <%= @user.name %></h1>
 <br>
 
+<% if user_signed_in? && @following %>
+	<%=link_to "Dejar de seguir a #{@user.name}", destroy_contacts_path(@user.id), method: :delete, :class => 'btn btn-info' %>
+<% elsif user_signed_in? && @user.id != current_user.id %>
+	<%=link_to "Seguir a #{@user.name}", contacts_path(@user.id), method: :post, :class => 'btn btn-info' %>
+<% end %>
+
+<br><br>
+<hr>
+
 <% @category.each do |category| %>
 	<% @activities.each do |act| %>
 		<% if act.activity.category_id == category.id %>
@@ -28,6 +37,5 @@
 		<% end %>
 	<% end %>
 <% end %>
-		
 		
 
