@@ -5,4 +5,6 @@ class PromoteActivity < ApplicationRecord
 
   attribute :payed, :boolean, default: false
 
+  validates :amount, :activity_id, presence: true
+
 end

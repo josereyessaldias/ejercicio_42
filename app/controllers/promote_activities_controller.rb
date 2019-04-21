@@ -21,7 +21,6 @@ class PromoteActivitiesController < ApplicationController
   end
 
   def destroy
-    #@promote_activity = PromoteActivity.where(user_id: params[:user_id], activity_id: params[:activity_id]).first
     @promote_activity = PromoteActivity.find(params[:id])
     @promote_activity.destroy
     redirect_to promote_activities_path(current_user), notice: 'La promoción fue eliminada'

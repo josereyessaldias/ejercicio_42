@@ -1,8 +1,6 @@
 # README
 
-Habilité Paypal, pagos. Me falta que la publicidad esté operatica y automatizada.
-
-Enlace Heroku: https://ejercicio41.herokuapp.com
+Habilité la posibilidad de seguir a otros usuarios. También habilité los notices y alerts. Revisé los accesos (cancancan).
 
 
 This README would normally document whatever steps are necessary to get the
